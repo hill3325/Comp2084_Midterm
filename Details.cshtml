@@ -1,0 +1,37 @@
+﻿@model COMP2084_MidTerm_NET5.Models.Candidate
+
+@{ ViewData["Title"] = "Candidates"; <!--2b.1 Change canadidates details page title to Candidates--> }
+
+<h1>Candidates</h1> <!--2b.1 Change canadidates details page header to Candidates-->
+
+<div>
+    <h4>Candidate</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            First Name <!--2b.3 Changed from FirstName to First Name-->
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Last Name <!--2b.3 Changed from LastName to Last Name-->
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Job)
+        </dt>
+        <dd class="col-sm-10">
+            @if(Model.Job != null)
+            {
+                @Html.ActionLink(Model.Job.Name, "Details", "Jobs", new {id = Model.JobId }) <!--2b.2 Adds job link in individual candidates details-->
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

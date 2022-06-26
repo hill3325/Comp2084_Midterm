@@ -1,0 +1,45 @@
+﻿@model IEnumerable<COMP2084_MidTerm_NET5.Models.Candidate>
+
+@{ ViewData["Title"] = "Candidates"; <!--2a.1 Changes title name to Candidates--> }
+
+<h1>Candidates</h1> <!--2a.1 Changes header name to Candidates-->
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Last Name <!--2a.2 Changes postition of last name to appear first--><!--2a.3 Changes LastName to Last Name-->
+            </th>
+            <th>
+               First Name <!--2a.3 Changes FirstName to First Name-->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName) <!--2a.2 Changes postition of last name values to appear first-->
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Job.Name)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
